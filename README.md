@@ -11,9 +11,8 @@ organized under `%USERPROFILE%\Downloads\BunnySSTool\<Category>\<ToolName>\`.
 ## Requirements
 
 - Windows 10/11
-- PowerShell 5.1+ (built in)
-- .NET Framework (built in, used for WPF)
-- An internet connection (tools are downloaded on first launch)
+- PowerShell 5.1+
+- .NET Framework
 
 ## Installation
 
