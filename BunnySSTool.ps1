@@ -6,7 +6,6 @@ Add-Type -AssemblyName System.Windows.Forms
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$script:ScriptDir   = Split-Path -Parent $MyInvocation.MyCommand.Path
 $script:RepoRawUrl  = "https://raw.githubusercontent.com/kxzyyyy/BunnySSTool/main"
 $script:InstallDir  = "$env:USERPROFILE\Downloads\BunnySSTool"
 
@@ -38,10 +37,6 @@ $Categories = @("All","Orbdiff","Spokwn","MeowTonynoh","PraiseLilly","RedLotus",
 
 function Get-AssetPath {
     param([string]$Name)
-    if ($script:ScriptDir) {
-        $p = Join-Path $script:ScriptDir "assets\$Name"
-        if (Test-Path -LiteralPath $p) { return $p }
-    }
     return "$script:RepoRawUrl/assets/$Name"
 }
 
