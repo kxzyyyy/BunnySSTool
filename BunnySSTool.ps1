@@ -1,5 +1,4 @@
-﻿#Requires -Version 5.1
-Add-Type -AssemblyName PresentationFramework
+﻿Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName WindowsBase
 Add-Type -AssemblyName System.Xaml
@@ -8,7 +7,7 @@ Add-Type -AssemblyName System.Windows.Forms
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 $script:ScriptDir   = Split-Path -Parent $MyInvocation.MyCommand.Path
-$script:AssetsDir   = Join-Path $script:ScriptDir "assets"
+$script:RepoRawUrl  = "https://raw.githubusercontent.com/kxzyyyy/BunnySSTool/main"
 $script:InstallDir  = "$env:USERPROFILE\Downloads\BunnySSTool"
 
 $ToolData = @(
@@ -39,9 +38,11 @@ $Categories = @("All","Orbdiff","Spokwn","MeowTonynoh","PraiseLilly","RedLotus",
 
 function Get-AssetPath {
     param([string]$Name)
-    $p = Join-Path $script:AssetsDir $Name
-    if (Test-Path -LiteralPath $p) { return $p }
-    return $null
+    if ($script:ScriptDir) {
+        $p = Join-Path $script:ScriptDir "assets\$Name"
+        if (Test-Path -LiteralPath $p) { return $p }
+    }
+    return "$script:RepoRawUrl/assets/$Name"
 }
 
 function New-ImageBrush {
@@ -233,7 +234,18 @@ $gifPath = Get-AssetPath "mai-dancing.gif"
 if ($gifPath) {
     Add-Type -AssemblyName System.Drawing
 
-    $gifBitmap = New-Object System.Drawing.Bitmap($gifPath)
+    if ($gifPath -match "^https?://") {
+        $gifTemp = [System.IO.Path]::Combine($env:TEMP, "bunny_mai-dancing.gif")
+        try {
+            $wc = New-Object System.Net.WebClient
+            $wc.Headers.Add("User-Agent", "BunnySSTool")
+            $wc.DownloadFile($gifPath, $gifTemp)
+            $gifPath = $gifTemp
+        } catch { $gifPath = $null }
+    }
+
+    if ($gifPath -and (Test-Path -LiteralPath $gifPath)) {
+        $gifBitmap = New-Object System.Drawing.Bitmap($gifPath)
     $frameCount = $gifBitmap.GetFrameCount([System.Drawing.Imaging.FrameDimension]::Time)
 
     $frameDelays = @()
@@ -373,6 +385,7 @@ if ($gifPath) {
         $progressTimer.Start()
     })
     $loadWindow.ShowDialog() | Out-Null
+    }
 }
 
 [xml]$xaml = @"
