@@ -17,7 +17,7 @@ organized under `%USERPROFILE%\Downloads\BunnySSTool\<Category>\<ToolName>\`.
 ## Installation
 
 ```powershell
-powershell -ExecutionPolicy Bypass -Command "& { $t=\"$env:TEMP\bunny.ps1\"; (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/kxzyyyy/BunnySSTool/main/BunnySSTool.ps1',$t); & $t }"
+powershell -ExecutionPolicy Bypass -Command "Invoke-Expression (Invoke-RestMethod 'https://raw.githubusercontent.com/kxzyyyy/BunnySSTool/main/BunnySSTool.ps1')"
 ```
 
 ## Tools included
