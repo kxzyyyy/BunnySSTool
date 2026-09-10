@@ -1,4 +1,4 @@
-Add-Type -AssemblyName PresentationFramework
+﻿Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName WindowsBase
 Add-Type -AssemblyName System.Xaml
@@ -16,7 +16,7 @@ $ToolData = @(
     @{ Name="Fileless";             Desc="Hunts fileless execution through event logs and memory dumps";  Category="Orbdiff";     Type="EXE";     URL="https://github.com/Orbdiff/Fileless/releases/latest" },
     @{ Name="JARParser";            Desc="Inspects JAR prefetch data and DcomLaunch string references";   Category="Orbdiff";     Type="EXE";     URL="https://github.com/Orbdiff/JARParser/releases/latest" },
     @{ Name="CheckDeletedUSN";      Desc="Cross-references USN deletion times against last boot timestamp"; Category="Orbdiff";   Type="EXE";     URL="https://github.com/Orbdiff/CheckDeletedUSN/releases/latest" },
-    @{ Name="USBDetector";          Desc="Enumerates past USB device connections and mount history";      Category="Orbdiff";     Type="EXE";     URL="https://github.com/Orbdiff/USBDetector/releases/latest" },
+    @{ Name="USBDetector";          Desc="Detects past USB device connections and mount history";      Category="Orbdiff";     Type="EXE";     URL="https://github.com/Orbdiff/USBDetector/releases/latest" },
     @{ Name="BAMDeletedKeys";       Desc="Recovers removed BAM registry entries to find wiped traces";    Category="Spokwn";      Type="EXE";     URL="https://github.com/spokwn/BamDeletedKeys/releases/latest" },
     @{ Name="pcasvc-executed";      Desc="Pulls Program Compatibility Assistant execution logs";          Category="Spokwn";      Type="EXE";     URL="https://github.com/spokwn/pcasvc-executed/releases/latest" },
     @{ Name="MeowClientFucker";     Desc="Flags known modified cheat clients and their leftovers";        Category="MeowTonynoh"; Type="EXE";     URL="https://github.com/MeowTonynoh/MeowClientFucker/releases/latest" },
@@ -30,7 +30,8 @@ $ToolData = @(
     @{ Name="DQRKIS-Fucker";        Desc="Searches for DQRKIS-specific cheat remnants";                   Category="Others";      Type="Powershell"; Command="Invoke-Expression (Invoke-RestMethod 'https://raw.githubusercontent.com/cheesecatlol/DQRKIS-FUCKER/refs/heads/main/DqrkisFucker.ps1')" },
     @{ Name="SystemInformer";       Desc="In-depth process, handle, and kernel-level explorer";          Category="Others";      Type="Link";    URL="https://www.systeminformer.com/canary" },
     @{ Name="Luyten";               Desc="Java reverse-engineering GUI built on the Procyon engine";      Category="Others";      Type="EXE";     URL="https://github.com/deathmarine/Luyten/releases/latest" },
-    @{ Name="ToolsDownloader++";    Desc="All-in-one downloader for popular SS checking utilities";       Category="Others";      Type="Link";    URL="https://detect.ac/tool/ToolsDownloader++" }
+    @{ Name="ToolsDownloader++";    Desc="All-in-one downloader for popular SS checking utilities";       Category="Others";      Type="Link";    URL="https://detect.ac/tool/ToolsDownloader++" },
+    @{ Name="Yarps ModAnalyzer";    Desc="Mod analyzer that inspects files for tampering and cheat hooks"; Category="Others";      Type="Powershell"; Command="Invoke-Expression (Invoke-RestMethod 'https://raw.githubusercontent.com/YarpLetapStan/PowershellScripts/refs/heads/main/YarpsModAnalyzer6.0.ps1')" }
 )
 
 $Categories = @("All","Orbdiff","Spokwn","MeowTonynoh","PraiseLilly","RedLotus","Others")
